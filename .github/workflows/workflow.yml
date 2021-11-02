@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['14']
+        node: ['16']
     steps:
+      - uses: actions/checkout@master
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
