@@ -3,10 +3,10 @@ name: React CI
 on:
   push:
     branches:
-       - master
+       - "master"
 
 jobs:
-  builds:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
