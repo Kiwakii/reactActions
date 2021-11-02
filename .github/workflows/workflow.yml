@@ -1,21 +1,27 @@
 name: React CI
-
 on:
   push:
     branches:
-       - master
-
+       - "master"
 jobs:
-  builds:
+  build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
+<<<<<<< HEAD
          node-version: ['14'] 
 
+=======
+        node: ['14', '16' ]
+>>>>>>> 076cd23bc59798f75574c9df218f962d4d592ba2
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
       - run: npm install
+<<<<<<< HEAD
       - run: npm run build
       - run: npm test 
        - uses: jakejarvis/s3-sync-action@master
@@ -27,3 +33,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
         SOURCE_DIR: 'build'      # optional: defaults to entire repository       
+=======
+      - run: npm test
+>>>>>>> 076cd23bc59798f75574c9df218f962d4d592ba2
